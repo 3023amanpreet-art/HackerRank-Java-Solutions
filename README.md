@@ -1,4 +1,4 @@
-# HackerRank Java Solutions ☕
+# HackerRank Java Solutions 
 
 This repository contains my solutions to Java programming challenges on HackerRank.
 
