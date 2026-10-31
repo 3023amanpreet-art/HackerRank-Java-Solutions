@@ -1,0 +1,22 @@
+
+import java.math.BigInteger;
+
+class Prime {
+    void checkPrime(int... numbers) {
+        StringBuilder result = new StringBuilder();
+
+        for (int n : numbers) {
+            if (n > 1 &&
+                BigInteger.valueOf(n).isProbablePrime(100)) {
+
+                if (result.length() > 0) {
+                    result.append(" ");
+                }
+
+                result.append(n);
+            }
+        }
+
+        System.out.println(result);
+    }
+}
