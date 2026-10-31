@@ -1,0 +1,40 @@
+
+import java.io.*;
+
+class Student implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    String name;
+    int age;
+
+    Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+
+public class Solution {
+    public static void main(String[] args) throws Exception {
+        Student student = new Student("Aman", 20);
+
+        ByteArrayOutputStream bytes =
+            new ByteArrayOutputStream();
+
+        ObjectOutputStream out =
+            new ObjectOutputStream(bytes);
+
+        out.writeObject(student);
+        out.close();
+
+        ObjectInputStream in = new ObjectInputStream(
+            new ByteArrayInputStream(bytes.toByteArray())
+        );
+
+        Student restored = (Student) in.readObject();
+
+        System.out.println(restored.name);
+        System.out.println(restored.age);
+
+        in.close();
+    }
+}
