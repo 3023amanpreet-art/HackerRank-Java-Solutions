@@ -1,0 +1,29 @@
+
+import java.lang.reflect.*;
+import java.util.*;
+
+public class Solution {
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+
+        Object o = new Inner().new Private();
+        Method method = o.getClass()
+                         .getDeclaredMethod("powerof2", int.class);
+
+        method.setAccessible(true);
+
+        String result = (String) method.invoke(o, num);
+
+        System.out.println(num + " is " + result);
+    }
+
+    static class Inner {
+        private class Private {
+            private String powerof2(int num) {
+                return (num > 0 && (num & (num - 1)) == 0)
+                    ? "power of 2" : "not a power of 2";
+            }
+        }
+    }
+}
