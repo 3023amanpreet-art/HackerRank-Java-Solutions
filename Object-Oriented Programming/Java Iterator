@@ -1,0 +1,18 @@
+
+import java.util.*;
+
+public class Solution {
+    static Iterator<Object> func(ArrayList<Object> list) {
+        Iterator<Object> it = list.iterator();
+
+        while (it.hasNext()) {
+            Object element = it.next();
+
+            if (element instanceof String) {
+                break;
+            }
+        }
+
+        return it;
+    }
+}
